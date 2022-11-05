@@ -63,9 +63,7 @@ if button == True:
     func(player_s1,appo_team1,inning1)
     func(player_s2,appo_team2,inning2)
     new_data=pd.DataFrame(players_dict_list)
-    with open("./model.pkl", 'rb') as f:
-          model = pickle.load(f)
-#     model = pickle.load(open('./model.pkl', 'rb'))
+    model = pickle.load(open('./model.pkl', 'rb'))
     y_pred=model.predict(new_data)
     pred_data=pd.DataFrame(y_pred,columns=['runs',"wick"])
     data=new_data.iloc[:,:-3].merge(pred_data,left_index=True,right_index=True)
